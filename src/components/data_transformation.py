@@ -41,15 +41,18 @@ class DataTransformation:
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
                 ("scaler",StandardScaler())
+
                 ]
             )
 
             cat_pipeline=Pipeline(
+
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
                 ("one_hot_encoder",OneHotEncoder()),
                 ("scaler",StandardScaler(with_mean=False))
                 ]
+
             )
 
             logging.info(f"Categorical columns: {categorical_columns}")
@@ -61,6 +64,8 @@ class DataTransformation:
                 ("cat_pipelines",cat_pipeline,categorical_columns)
 
                 ]
+
+
             )
 
             return preprocessor
